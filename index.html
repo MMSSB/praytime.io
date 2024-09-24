@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/pray/Mosquepng.parspng.com-13.png" type="image/x-icon">
+    <title>Islamic Prayer Times</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="assets/pray/styles.css">
+    <link rel="stylesheet" href="assets/pray/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="assets/pray/Mosquepng.parspng.com-13.png" alt="logo" />
+      <h2>Pray Time</h2>
+    </div>
+    <ul class="sidebar-links">
+      <h4>
+        <span>Main Menu</span>
+        <div class="menu-separator"></div>
+      </h4>
+      <li>
+      <a href="index.html">
+        <span class="material-symbols-outlined"> Home </span>Home</a>
+    </li>
+      <li>
+        <a href="masjid..html">
+          <span class="material-symbols-outlined"> map </span>Masjid Finder</a>
+      </li> 
+       <!--   <li>
+            <a href="about.html">
+              <span class="material-symbols-outlined"> bolt </span>About</a>
+          </li> -->
+
+          
+         <!-- Other Sidebar Links -->
+         <!-- <h4>
+            <span>Account</span>
+            <div class="menu-separator"></div>
+          </h4>
+          <li>
+            <a href="profile.html"><span class="material-symbols-outlined"> account_circle </span>Profile</a>
+          </li> -->
+          <!--<li>
+            <a href="settings.html"><span class="material-symbols-outlined"> settings </span>Settings</a>
+          </li>-->
+          <!--<li>
+            <a href="#"><span class="material-symbols-outlined"> logout </span>Logout</a>
+          </li> -->
+        </ul>
+    </div>
+</div>
+</div>
+</aside>
+
+<div class="container">
+  <h1>Islamic Prayer Times for: <span id="city-name">Your City</span></h1>
+  <div class="button-container">
+      <button id="show-today">Show Today</button>
+      <button id="show-tomorrow">Show Tomorrow</button>
+  </div>
+  <div class="prayer-times">
+      <ul id="times-today">
+          <!-- Today's prayer times will be dynamically added here -->
+      </ul>
+      <ul id="times-tomorrow">
+          <!-- Tomorrow's prayer times will be dynamically added here -->
+      </ul>
+  </div>
+</div>
+
+    <footer class="footer">Made By MMS</footer>
+    
+
+    
+    <!-- Include the Adhan.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/adhan@4.4.3/lib/cjs/Adhan.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/adhan-extended@6.1.0/lib/bundles/adhan.umd.min.js"></script>
+    <script src="assets/pray/pray.js"></script>
+    <script src="assets/pray/adhan.js"></script>
+    <script>
+        function redirectToMobileSite() {
+            if (window.innerWidth <= 768) { // Adjust the width threshold as needed
+                window.location.href = "home.html"; // Replace with the URL of the site to redirect to
+            }
+        }
+
+        // Execute redirect function when the page loads
+        window.onload = redirectToMobileSite;
+    </script>
+</body>
+</html>

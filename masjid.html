@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <!--  -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/pray/masjid.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Masjid Finder</title>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=87oqPP"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=87oqPP" type="text/css">
+  <link rel="stylesheet" href="assets/pray/map.css">
+  
+  
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu2 cid-ulrUTMHlFX" once="menu" id="menu2-7">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top collapsed">
+        <div class="container">
+            <div class="navbar-brand">
+                <span class="navbar-logo">
+                    <a href="masjid.html">
+                        <img src="assets/pray/masjid.png" alt="" style="height: 3rem;">
+                    </a>
+                </span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="masjid.html">Masjid Finder</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="home.html">Home</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="masjid.html">Find Masjid</a></li></ul>
+                
+                
+            </div>
+        </div>
+    </nav>
+    <h1>---------------------------</h1>
+    <section data-bs-version="5.1" class="map1 cid-ulCNnE56KZ" id="map01-a">
+
+        <h1 class="h1-container"> Masjid Finder </h1>
+        <div>
+      
+        <!-- Search input with suggestions -->
+        <div class="search-container">
+          <input type="text" id="search-term" placeholder="Enter search term (e.g., mosque, مسجد)" onkeyup="showSuggestions()" autocomplete="off" />
+          <div id="suggestions" class="suggestions-box"></div>
+        </div>
+      
+        <h4> hint search: masjid, mosque and مسجد </h4>
+      <h6>you can click search without typing it will go to the diffualt process </h6>
+      <h6>when you search it will ask you allow location, allow it to start process and find the nearest Masjids </h6>
+      <h6>and if you want to go to the direction just click view direction or if you want to see all masjids just click view larger</h6>
+        <!-- Button to trigger the search -->
+        <button class="search-btn" onclick="updateMap()">Search</button>
+      
+        <div class="map-container">
+          <iframe
+            id="map"
+            width="100%"
+            height="450"
+            style="border:0; border-radius: 25px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="">
+          </iframe>
+        </div>
+      
+        
+
+        <footer class="footer">Made By MMS</footer>
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
+<script src="assets/pray/map.js"></script>
+<script>
+    function redirectBasedOnDevice() {
+        var width = window.innerWidth;
+
+        // Redirect for desktops and laptops (above 768px)
+        if (width > 768) {
+            window.location.href = "masjid..html"; // Replace with desktop/laptop URL
+        }
+
+        // Redirect for smaller screens (768px or less) - no action needed, can be handled with CSS or default content
+    }
+
+    // Execute redirect function when the page loads
+    window.onload = redirectBasedOnDevice;
+</script>
+  
+</body>
+</html>

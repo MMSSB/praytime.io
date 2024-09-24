@@ -1,0 +1,143 @@
+:root {
+  --card-background: #ffffff; /* Light mode card background */
+  --card-border-color: #ffffff; /* Light mode card border color */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --card-background: #2b2b2b; /* Dark mode card background */
+    --card-border-color: #2c2c2c; /* Dark mode card border color */
+  }
+}
+:root {
+    --background: rgb(233, 233, 233);
+    --color: #000000;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--color);
+  }
+
+  .darko {
+    --background: #000000;
+    --color: rgb(233, 233, 233);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: #000000;
+      --color: rgb(233, 233, 233);
+    }
+  }
+
+  .light {
+    --background: rgb(233, 233, 233);
+    --color: #000000;
+  }
+
+
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background);
+  }
+  
+  h1 {
+    margin-top: 20px;
+    color: var(--color);
+    font-weight: 600;
+  }
+
+  
+  .search-container {
+    position: relative;
+    width: 350px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  
+  input {
+    padding: 15px 20px;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 25px;
+    border: 2px solid #007860;
+    outline: none;
+    transition: border 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  input:focus {
+    border-color: #007860;
+  }
+  
+  button.search-btn {
+    margin-top: 15px;
+    padding: 12px 25px;
+    font-size: 16px;
+    color: var(--color);
+    background-color: #007860;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  button.search-btn:hover {
+    background-color: #007860;
+    transform: translateY(-3px);
+  }
+  
+  button.search-btn:active {
+    transform: translateY(0);
+  }
+  
+  .suggestions-box {
+    position: absolute;
+    width: 100%;
+    background-color: var(--card-background);
+    border-radius: 0 0 15px 15px;
+    border: 1px solid #007860;
+    border-top: none;
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .suggestion {
+    padding: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .suggestion:hover {
+    background-color: #007860;
+  }
+  
+  .map-container {
+      background: var(--card-background);
+    width: 80%;
+    margin: 30px auto;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  .h1-container {
+      background: var(--card-background);
+      width: 50%;
+      margin: 30px auto;
+      border-radius: 25px;
+      padding: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center; /* Centers the h1 text */
+      font-size: 2em; /* Adjust the size of the h1 text */
+      color: var(--text-color); /* Use a variable for text color */
+    }
