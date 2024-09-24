@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (Notification.permission === 'granted') {
             const options = {
                 body: body,
-                icon: 'path_to_icon/adhan_icon.png', // Add path to your notification icon
+                icon: '../assets/images/mosquepng.parspng.com-13.png', // Add path to your notification icon
             };
             new Notification(title, options);
         }
