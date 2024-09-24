@@ -55,8 +55,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         displayPrayerTimes(prayerTimes, Intl.DateTimeFormat().resolvedOptions().timeZone, timesList);
 
-        // Check and trigger notifications for Adhan times
-        checkAndNotify(prayerTimes);
+        // Set custom time for testing (this will be replaced by real prayer times when used live)
+        const customPrayerTimes = {
+            fajr: new Date(Date.now() + 10000), // Fajr in 10 seconds for testing
+            dhuhr: new Date(Date.now() + 20000), // Dhuhr in 20 seconds for testing
+            asr: new Date(Date.now() + 30000), // Asr in 30 seconds for testing
+            maghrib: new Date(Date.now() + 40000), // Maghrib in 40 seconds for testing
+            isha: new Date(Date.now() + 50000) // Isha in 50 seconds for testing
+        };
+
+        // Check and trigger notifications for custom prayer times (for testing)
+        checkAndNotify(customPrayerTimes);
     }
 
     // Function to display prayer times
@@ -73,23 +82,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to check if it's time for Adhan and send notifications
     function checkAndNotify(prayerTimes) {
-        const now = new Date();
         const prayerNames = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
-        const prayers = [
-            { name: 'Fajr', time: prayerTimes.fajr },
-            { name: 'Dhuhr', time: prayerTimes.dhuhr },
-            { name: 'Asr', time: prayerTimes.asr },
-            { name: 'Maghrib', time: prayerTimes.maghrib },
-            { name: 'Isha', time: prayerTimes.isha },
-        ];
 
-        // Check if any prayer time matches the current time and send notification
-        prayers.forEach(prayer => {
-            const prayerTime = new Date(prayer.time);
-            if (now.getHours() === prayerTime.getHours() && now.getMinutes() === prayerTime.getMinutes()) {
-                sendNotification(`${prayer.name} Adhan`, `It's time for ${prayer.name} prayer.`);
-            }
-        });
+        // Check if any prayer time matches the current time
+        setInterval(() => {
+            const now = new Date();
+            prayerNames.forEach(prayer => {
+                const prayerTime = prayerTimes[prayer.toLowerCase()];
+                if (prayerTime && now >= prayerTime) {
+                    sendNotification(`${prayer} Adhan`, `It's time for ${prayer} prayer.`);
+                    prayerTimes[prayer.toLowerCase()] = null; // Avoid sending multiple notifications for the same prayer
+                }
+            });
+        }, 1000); // Check every second
     }
 
     // Function to send notifications
