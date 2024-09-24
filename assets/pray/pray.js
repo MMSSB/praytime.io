@@ -1,31 +1,38 @@
-// Request notification permission
-if (Notification.permission !== 'granted') {
-    Notification.requestPermission().then(permission => {
-        if (permission !== 'granted') {
-            alert('Notification permission denied');
-        }
-    });
-}
-
-// Automatically access user's location to calculate prayer times
 document.addEventListener('DOMContentLoaded', () => {
     const timesListToday = document.getElementById('times-today');
+    const timesListTomorrow = document.getElementById('times-tomorrow');
     const cityNameElement = document.getElementById('city-name');
+    const todayButton = document.getElementById('show-today');
+    const tomorrowButton = document.getElementById('show-tomorrow');
 
+    // Automatically display today's prayer times on page load
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
 
-            // Fetch the city name from the latitude and longitude
+            // Fetch the city name from latitude and longitude
             getCityName(latitude, longitude);
 
-            // Calculate today's prayer times
+            // Show today's prayer times
             const today = new Date();
             calculatePrayerTimes(latitude, longitude, today, timesListToday);
 
-            // Check and schedule notifications
-            scheduleAdhanNotifications(latitude, longitude, today);
+            // Event listener to show today's prayer times
+            todayButton.addEventListener('click', () => {
+                timesListToday.style.display = 'block';  // Show today's times
+                timesListTomorrow.style.display = 'none'; // Hide tomorrow's times
+            });
+
+            // Event listener to show tomorrow's prayer times
+            tomorrowButton.addEventListener('click', () => {
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1); // Get tomorrow's date
+                calculatePrayerTimes(latitude, longitude, tomorrow, timesListTomorrow);
+
+                timesListTomorrow.style.display = 'block';  // Show tomorrow's times
+                timesListToday.style.display = 'none'; // Hide today's times
+            });
         }, (error) => {
             alert('Unable to retrieve your location');
         });
@@ -65,48 +72,10 @@ function getCityName(latitude, longitude) {
         .then(response => response.json())
         .then(data => {
             const city = data.address.city || data.address.town || data.address.village || "Unknown City";
-            cityNameElement.textContent = city;
+            document.getElementById('city-name').textContent = city;
         })
         .catch(error => {
             console.error('Error fetching city name:', error);
-            cityNameElement.textContent = "Your City";
+            document.getElementById('city-name').textContent = "Your City";
         });
-}
-
-// Function to schedule notifications at adhan times
-function scheduleAdhanNotifications(latitude, longitude, date) {
-    const params = adhan.CalculationMethod.MuslimWorldLeague();
-    params.madhab = adhan.Madhab.Shafi;
-
-    const coordinates = new adhan.Coordinates(latitude, longitude);
-    const prayerTimes = new adhan.PrayerTimes(coordinates, date, params);
-
-    // Check for each prayer time and schedule a notification if it's still in the future
-    const currentTime = new Date();
-    const adhanTimes = [
-        { name: "Fajr", time: prayerTimes.fajr },
-        { name: "Dhuhr", time: prayerTimes.dhuhr },
-        { name: "Asr", time: prayerTimes.asr },
-        { name: "Maghrib", time: prayerTimes.maghrib },
-        { name: "Isha", time: prayerTimes.isha },
-    ];
-
-    adhanTimes.forEach(prayer => {
-        const timeUntilPrayer = prayer.time - currentTime;
-        if (timeUntilPrayer > 0) {
-            setTimeout(() => {
-                sendAdhanNotification(prayer.name);
-            }, timeUntilPrayer);
-        }
-    });
-}
-
-// Function to send Adhan notification
-function sendAdhanNotification(prayerName) {
-    if (Notification.permission === 'granted') {
-        new Notification(`Adhan: ${prayerName}`, {
-            body: `It's time for ${prayerName} prayer.`,
-            icon: '/adhan_icon.png',
-        });
-    }
 }
